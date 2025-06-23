@@ -13,19 +13,20 @@ permissions:
 jobs:
   deploy:
     environment:
-      name: production   # 👈 Connects to the GitHub Environment you created
+      name: production   # 👈 This links it to your "production" environment
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout source
         uses: actions/checkout@v4
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload static site
+      - name: Upload static files
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: .   # 👈 This tells GitHub to deploy index.html, styles.css, etc.
 
       - name: Deploy to GitHub Pages
         id: deployment
